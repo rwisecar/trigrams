@@ -89,4 +89,5 @@ ENV/
 .ropeproject
 
 #Sherlock text file
-Sherlock.txt/
+Sherlock.txt
+short_sherlock.txt

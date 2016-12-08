@@ -3,25 +3,26 @@
 import io
 from random import randint
 
-story = []
-trigrams_dict = {}
-
 
 def open_file(text_file):
     """Open and read source text file."""
     source_file = io.open(text_file, 'r+')
-    story.append(source_file.read().split())
+    new_words = source_file.read()
+    story = new_words.split('\W\s\d')
     source_file.close()
+    return story
 
 
 def build_dictionary():
     """Build a dictonary for trigram analysis."""
+    trigrams_dict = {}
     for i in range(len(story)):
         new_key = " ".join(story[i:i + 2])
         if new_key in trigrams_dict:
             trigrams_dict[new_key].append(story[i + 2])
         else:
             trigrams_dict[new_key] = [story[i + 2]]
+    return trigrams_dict
 
 
 def write_story(words):
@@ -33,3 +34,4 @@ def write_story(words):
         else:
             break
     return new_story
+
